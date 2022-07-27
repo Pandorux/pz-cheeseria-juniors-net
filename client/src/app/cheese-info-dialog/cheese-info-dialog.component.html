@@ -1,0 +1,62 @@
+<div class="container-fluid services  restaurant dialog">
+  <div class="row">
+    <div class="col-sm-12 img-container">
+      <img 
+        src="{{ cheese.image }}" 
+        alt="" 
+        style="cursor: default;"
+      />
+    </div>
+  </div>
+
+  <div class="row res-headings title-container">
+    <div class="col">
+      <h3>{{ cheese.title }}</h3>
+    </div>
+
+    <div class="col" style="text-align: right;">
+      <h3>${{ cheese.price }}</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 flex-column">
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-chip-list [selectable]="false" aria-label="Cheese Category">
+        <mat-chip>{{ cheese.category }}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+
+  <div class="row description">
+    <div class="col-sm-12">
+      <p>
+        {{ cheese.description }}
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col buttons-container">
+        <button
+          class="btn"
+          [attr.data-cy]="'add-to-cart-' + cheese.id"
+          (click)="addToCart(cheese.id)"
+        >
+          Add to cart
+      </button>
+
+      <button
+        class="btn"
+        (click)="closeDialog()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

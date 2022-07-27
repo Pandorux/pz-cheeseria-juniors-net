@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../_services/cheeses.service';
 import { CartService } from '../_services/cart.service';
+import { Cheese } from '../_models/cheese';
+import { CheeseInfoDialogComponent } from '../cheese-info-dialog/cheese-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cheeses-tab',
@@ -19,7 +22,8 @@ export class CheesesTabComponent implements OnInit {
   currency: Object;
   constructor(
     private productService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -35,5 +39,12 @@ export class CheesesTabComponent implements OnInit {
     console.log('Added to cart');
     console.log(id);
     this.cartService.AddProductToCart(id);
+  }
+
+  openInfoDialog(cheese: Cheese) {
+
+    let dialogRef = this.dialog.open(CheeseInfoDialogComponent, {
+      data: { cheese: cheese }
+    });
   }
 }

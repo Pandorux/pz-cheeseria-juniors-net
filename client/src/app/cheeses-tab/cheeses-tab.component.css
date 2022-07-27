@@ -28,35 +28,51 @@ a
 
 .restaurant{
     max-height: 500px !important;
-    padding:30px 0 30px 0
+    padding:30px 0 30px 0;
+    border-radius: 7.5px;
 }
 
-.restaurant:hover{
-    border:#e9e9e9 2px solid;
+.restaurant-hover:hover{
+    background-color: #fff5f5;
     transition: border 2s;
-    
 }
+
 .restaurant .badge .badge-danger{
 
 }
-.restaurant img{
+
+.restaurant img {
     width: 300px;
     height: 200px;
 }
 
-.restaurant img{
+.restaurant img {
     width: 250px;
     height: 150px;
     border-radius: 10px 0 10px 0;
     border: 4px #907f7f61 solid;
-  }
+}
+
+.restaurant img:hover {
+    cursor: pointer;
+}
 
 .restaurant .btn{
     background: #cf0810;
     color: white;
     padding: 10px 20px;
-    border: #ccc 5px solid;
+    border: rgb(204, 204, 204) 5px solid;
     border-radius: 50px;
+}
+
+.restaurant .btn:hover{
+    background: #ac070c;
+    border: rgb(164, 164, 164) 5px solid;
+}
+
+.restaurant .btn:active{
+    background: #80060a;
+    border: rgb(124, 124, 124) 5px solid;
 }
 
 .res-headings h1{

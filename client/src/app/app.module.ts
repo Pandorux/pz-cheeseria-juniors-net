@@ -12,15 +12,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatChipsModule } from '@angular/material/chips'
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CheesesTabComponent } from './cheeses-tab/cheeses-tab.component';
+import { CheeseInfoDialogComponent } from './cheese-info-dialog/cheese-info-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, CheesesTabComponent],
+  declarations: [AppComponent, NavbarComponent, CheesesTabComponent, CheeseInfoDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -35,6 +38,8 @@ import { CheesesTabComponent } from './cheeses-tab/cheeses-tab.component';
     NgxSpinnerModule,
     NoopAnimationsModule,
     MatDialogModule,
+    MatChipsModule,
+    MatDividerModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],
