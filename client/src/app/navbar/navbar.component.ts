@@ -5,6 +5,7 @@ import { Cheese } from '../_models/cheese';
 import { Transaction } from '../_models/transaction';
 import { TransItem } from '../_models/transitem';
 import { TransactionsService } from '../_services/transactions.service';
+import { Transtype } from '../_models/trans-type';
 
 @Component({
   selector: 'app-navbar',
@@ -66,24 +67,25 @@ export class NavbarComponent implements OnInit {
   // Converts Cart to Purchase Transaction
   convertCartToTransaction(): Transaction {
     let trans: Transaction = {
-      transType: "Purchase", // TODO: Convert to Enum
+      transType: Transtype[Transtype.Purchase].toString(),
+      transDateTime: new Date(),
       totalItemQuantity: this.cartSize,
       totalAmount: this.calculateTotal(),
-      transItems: []
+      items: []
     };
 
     Object.entries(this.cartData).forEach (
       ([key, value]) => {
         let cheese: Cheese = this.getDetails(key);
         let t: TransItem = {
-          itemNo: trans.transItems.length + 1,
+          itemNo: trans.items.length + 1,
           cheeseId: cheese.id,
           quantity: value,
           price: cheese.price,
           total: value * cheese.price
         };
 
-        trans.transItems.push(t);
+        trans.items.push(t);
       }
     );
 
@@ -100,7 +102,7 @@ export class NavbarComponent implements OnInit {
     let trans: Transaction = this.convertCartToTransaction(); 
 
     console.log('Converted Cart', trans);
-    this.transService.postTransaction(trans).subscribe(() => console.log('Post Transaction Complete'));
+    this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete', r));
     this.clearCart();
   }
 }

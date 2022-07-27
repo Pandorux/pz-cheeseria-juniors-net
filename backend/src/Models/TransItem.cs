@@ -2,9 +2,8 @@
 
 namespace Pz.Cheeseria.Api.Models
 {
-    public class TransactionItem
+    public class TransItem
     {
-        public Guid TransId { get; set; }
         public int ItemNo { get; set; } // Identity
         public int CheeseId { get; set; } // FK to Product Sold
         public int Quantity { get; set; }

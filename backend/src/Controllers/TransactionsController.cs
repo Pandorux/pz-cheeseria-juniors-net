@@ -52,22 +52,13 @@ namespace Pz.Cheeseria.Api.Controllers
         [HttpPost]
         [ProducesResponseType(200)]
         [Route("post")]
+        // TODO: Nested Item Array is not being sent through
         public IActionResult PostTransaction([FromBody] Transaction trans)
         {
+            trans.TransactionNo = TransactionRepository.Transactions.Count + 1;
             TransactionRepository.Transactions.Add(trans);
 
             return Ok();
         }
-
-        [HttpPost]
-        [ProducesResponseType(200)]
-        [Route("postMulti")]
-        public IActionResult PostTransactions([FromBody] Transaction[] transactions)
-        {
-            TransactionRepository.Transactions.AddRange(transactions);
-
-            return Ok();
-        }
-
     }
 }
