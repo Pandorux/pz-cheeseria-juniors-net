@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../_services/cart.service';
 import { CartModelPublic } from '../_models/cart';
 import { Cheese } from '../_models/cheese';
+import { Transaction } from '../_models/transaction';
+import { TransItem } from '../_models/transitem';
+import { TransactionsService } from '../_services/transactions.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +21,10 @@ export class NavbarComponent implements OnInit {
   store: any = [];
   logo: any;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private transService: TransactionsService
+  ) {}
 
   ngOnInit() {
     // set the products locally
@@ -56,8 +62,45 @@ export class NavbarComponent implements OnInit {
       0
     );
   }
+  
+  // Converts Cart to Purchase Transaction
+  convertCartToTransaction(): Transaction {
+    let trans: Transaction = {
+      transType: "Purchase", // TODO: Convert to Enum
+      totalItemQuantity: this.cartSize,
+      totalAmount: this.calculateTotal(),
+      transItems: []
+    };
+
+    Object.entries(this.cartData).forEach (
+      ([key, value]) => {
+        let cheese: Cheese = this.getDetails(key);
+        let t: TransItem = {
+          itemNo: trans.transItems.length + 1,
+          cheeseId: cheese.id,
+          quantity: value,
+          price: cheese.price,
+          total: value * cheese.price
+        };
+
+        trans.transItems.push(t);
+      }
+    );
+
+    return trans;
+  }
+
+  clearCart() {
+    this.cartSize = 0;
+    this.cartTotal = 0;
+    this.cartService.ClearCart();
+  }
 
   purchaseCart() {
-    // TODO:
+    let trans: Transaction = this.convertCartToTransaction(); 
+
+    console.log('Converted Cart', trans);
+    this.transService.postTransaction(trans).subscribe(() => console.log('Post Transaction Complete'));
+    this.clearCart();
   }
 }

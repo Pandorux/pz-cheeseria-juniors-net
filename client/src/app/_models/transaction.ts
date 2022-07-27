@@ -1,7 +1,7 @@
 import { TransItem } from "./transitem";
 
 export interface Transaction {
-    transactionNo: number;
+    transactionNo?: number;
     transType: string;
     totalItemQuantity: number;
     totalAmount: number;
