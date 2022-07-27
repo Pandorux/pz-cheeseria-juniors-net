@@ -10,7 +10,7 @@ Things to Complete
     - Add Endpoint for Posting Cheeses
     - Sort out Data Storage Scenario (Probs 'Store' Data in Backend or do SQLLite DB)
     - Add Controller for Transactions
-    - Create Model for Transactions
+    - ~~Create Model for Transactions~~
     - Probs add API Service for Transactions in Frontend
     - Verify if everything is working w/ Postman
 
