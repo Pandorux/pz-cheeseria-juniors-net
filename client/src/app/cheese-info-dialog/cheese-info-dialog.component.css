@@ -17,17 +17,11 @@
 .dialog {
     padding: 0px !important;
     max-width: 375px;
-    
 }
 
 .img-container {
     display: flex;
     justify-content: center;
-}
-
-.img-container img {
-    width: auto;
-    height: 100%;
 }
 
 .title-container, .buttons-container {
