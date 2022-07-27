@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatChipsModule } from '@angular/material/chips'
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -36,6 +38,8 @@ import { CheeseInfoDialogComponent } from './cheese-info-dialog/cheese-info-dial
     NgxSpinnerModule,
     NoopAnimationsModule,
     MatDialogModule,
+    MatChipsModule,
+    MatDividerModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],

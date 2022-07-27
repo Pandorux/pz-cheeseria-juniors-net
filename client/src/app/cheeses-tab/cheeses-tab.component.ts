@@ -41,9 +41,10 @@ export class CheesesTabComponent implements OnInit {
     this.cartService.AddProductToCart(id);
   }
 
-  openInfoDialog(id: number) {
+  openInfoDialog(cheese: Cheese) {
+
     let dialogRef = this.dialog.open(CheeseInfoDialogComponent, {
-      data: { cheese: this.cheeses[id] }
+      data: { cheese: cheese }
     });
   }
 }

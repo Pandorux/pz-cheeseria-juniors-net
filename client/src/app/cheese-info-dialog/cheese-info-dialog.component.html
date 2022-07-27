@@ -1,1 +1,61 @@
-<p>cheese-info-dialog works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <img 
+        src="{{ cheese.image }}" 
+        alt="" 
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3>{{ cheese.title }}</h3>
+      
+
+    </div>
+
+    <div class="col">
+      <p>
+        <strong>${{ cheese.price }}</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-divider></mat-divider>
+
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip color="primary" selected>{{ cheese.category }}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <p>
+        {{ cheese.description }}
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <button
+          class="btn"
+          [attr.data-cy]="'add-to-cart-' + cheese.id"
+          (click)="addToCart(cheese.id)"
+        >
+          Add to cart
+      </button>
+
+      <button
+        class="btn"
+        (click)="closeDialog()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

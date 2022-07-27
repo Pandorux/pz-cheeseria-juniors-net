@@ -3,8 +3,8 @@ Things to Complete
 
 1. Task 1: Cheese Info Dialog
     - ~~Create Component~~
-    - Routing & Getting Data
-    - HTML Structure & CSS
+    - ~~Routing & Getting Data~~
+    - ~~HTML Structure~~ & CSS
 
 2. Purchase Button Functionality
     - Add Endpoint for Posting Cheeses
