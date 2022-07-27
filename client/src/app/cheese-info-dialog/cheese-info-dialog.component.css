@@ -1,0 +1,45 @@
+
+.restaurant mat-chip-list {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 7.5px;
+}
+
+.restaurant mat-chip-list mat-chip {
+    color: white;
+    background-color: #cf0810;
+}
+
+.restaurant mat-divider {
+    margin: 0 7.5px 7.5px 7.5px;
+}
+
+.dialog {
+    padding: 0px !important;
+    max-width: 375px;
+    
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.img-container img {
+    width: auto;
+    height: 100%;
+}
+
+.title-container, .buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    text-align: justify;
+    padding: 15px 0 15px 0px;
+}
+
+.description p {
+    padding: 0px 7.5px 10px !important;
+}

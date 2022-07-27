@@ -6,7 +6,10 @@ import { CartService } from '../_services/cart.service';
 @Component({
   selector: 'app-cheese-info-dialog',
   templateUrl: './cheese-info-dialog.component.html',
-  styleUrls: ['./cheese-info-dialog.component.css']
+  styleUrls: [
+    './cheese-info-dialog.component.css', 
+    '../cheeses-tab/cheeses-tab.component.css'
+  ]
 })
 export class CheeseInfoDialogComponent implements OnInit {
 

@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid services  restaurant dialog">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 img-container">
       <img 
         src="{{ cheese.image }}" 
         alt="" 
@@ -8,31 +8,33 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row res-headings title-container">
     <div class="col">
       <h3>{{ cheese.title }}</h3>
-      
-
     </div>
 
-    <div class="col">
-      <p>
-        <strong>${{ cheese.price }}</strong>
-      </p>
+    <div class="col" style="text-align: right;">
+      <h3>${{ cheese.price }}</h3>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 flex-column">
       <mat-divider></mat-divider>
 
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip color="primary" selected>{{ cheese.category }}</mat-chip>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-chip-list [selectable]="false" aria-label="Cheese Category">
+        <mat-chip>{{ cheese.category }}</mat-chip>
       </mat-chip-list>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row description">
     <div class="col-sm-12">
       <p>
         {{ cheese.description }}
@@ -41,7 +43,7 @@
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col buttons-container">
         <button
           class="btn"
           [attr.data-cy]="'add-to-cart-' + cheese.id"
