@@ -56,4 +56,8 @@ export class NavbarComponent implements OnInit {
       0
     );
   }
+
+  purchaseCart() {
+    // TODO:
+  }
 }
