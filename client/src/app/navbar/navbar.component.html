@@ -23,13 +23,49 @@
       <li class="nav-item">
         <a
           href="#"
-          class="nav-link"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
+          class="nav-link dropdown-toggle"
+          role="button"
+          id="navbarDropdown"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="true"
+          [attr.data-cy]="'view-transaction-history-btn'"
           >Recent Purchases</a
         >
-      </li>
 
+        <div
+          class="dropdown-menu dropdown-menu-left"
+          aria-labelledby="navbarDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <h2 class="ml-5 mt-4">Your Purchase History</h2>
+          <div
+            class="
+              no-item
+              w-100
+              d-flex
+              justify-content-center
+              align-items-center
+              flex-column
+            "
+            *ngIf="cartSize === 0"
+          >
+            <span
+              ><img
+                src="../../assets/img/nothing_to_see.png"
+                alt=""
+                class="nothing-img"
+            /></span>
+            <span class="nothing-top-text mt-2 font-weight-bold"
+              >Nothing to see here!</span
+            >
+            <span class="nothing-small-text"
+              >Once you buy some of our delicious cheeses you'll see your purchases here!</span
+            >
+          </div>
+        </div>
+      </li>
+      
       <div class="dropdown-divider d-block d-lg-none"></div>
 
       <div class="d-block">
@@ -44,6 +80,7 @@
         </button>
       </div>
     </ul>
+
     <ul class="navbar-nav ml-auto icons">
       <li class="space"></li>
 
@@ -66,7 +103,7 @@
         </a>
 
         <div
-          class="dropdown-menu"
+          class="dropdown-menu dropdown-menu-right"
           aria-labelledby="navbarDropdown"
           (click)="$event.stopPropagation()"
         >
@@ -180,6 +217,7 @@
         </div>
       </li>
     </ul>
+
   </div>
 </nav>
 <!--End homepage-->
