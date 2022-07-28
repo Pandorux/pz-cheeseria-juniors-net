@@ -102,7 +102,7 @@ export class NavbarComponent implements OnInit {
     let trans: Transaction = this.convertCartToTransaction(); 
 
     console.log('Converted Cart', trans);
-    this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete', r));
+    this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete'));
     this.clearCart();
   }
 }

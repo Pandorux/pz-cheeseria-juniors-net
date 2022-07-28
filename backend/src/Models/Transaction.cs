@@ -10,6 +10,7 @@ namespace Pz.Cheeseria.Api.Models
         public DateTime TransDateTime { get; set; }
         public int TotalItemQuantity { get; set; }
         public decimal TotalAmount { get; set; }
-        public TransItem[] Items;
+
+        public TransItem[] Items { get; set; }
     }
 }
