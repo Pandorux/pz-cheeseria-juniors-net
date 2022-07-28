@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../_services/cart.service';
 import { CartModelPublic } from '../_models/cart';
 import { Cheese } from '../_models/cheese';
+import { Transaction } from '../_models/transaction';
+import { TransItem } from '../_models/transitem';
+import { TransactionsService } from '../_services/transactions.service';
+import { Transtype } from '../_models/trans-type';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +22,10 @@ export class NavbarComponent implements OnInit {
   store: any = [];
   logo: any;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private transService: TransactionsService
+  ) {}
 
   ngOnInit() {
     // set the products locally
@@ -55,5 +62,47 @@ export class NavbarComponent implements OnInit {
       (total, [key, value]) => total + this.getDetails(key).price * value,
       0
     );
+  }
+  
+  // Converts Cart to Purchase Transaction
+  convertCartToTransaction(): Transaction {
+    let trans: Transaction = {
+      transType: Transtype[Transtype.Purchase].toString(),
+      transDateTime: new Date(),
+      totalItemQuantity: this.cartSize,
+      totalAmount: this.calculateTotal(),
+      items: []
+    };
+
+    Object.entries(this.cartData).forEach (
+      ([key, value]) => {
+        let cheese: Cheese = this.getDetails(key);
+        let t: TransItem = {
+          itemNo: trans.items.length + 1,
+          cheeseId: cheese.id,
+          quantity: value,
+          price: cheese.price,
+          total: value * cheese.price
+        };
+
+        trans.items.push(t);
+      }
+    );
+
+    return trans;
+  }
+
+  clearCart() {
+    this.cartSize = 0;
+    this.cartTotal = 0;
+    this.cartService.ClearCart();
+  }
+
+  purchaseCart() {
+    let trans: Transaction = this.convertCartToTransaction(); 
+
+    console.log('Converted Cart', trans);
+    this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete'));
+    this.clearCart();
   }
 }

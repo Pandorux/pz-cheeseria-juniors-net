@@ -162,9 +162,20 @@
               </div>
             </div>
           </div>
-          <div class="cart-summary" *ngIf="cartSize !== 0">
-            <small>{{ cartSize !== 0 ? cartSize : 0 }} Selected item(s)</small>
-            <h5>TOTAL : {{ calculateTotal() | currency: "USD" }}</h5>
+          <div class="row cart-summary" *ngIf="cartSize !== 0" style="display: flex; justify-content: space-between;">
+            <div class="col">
+                <small>{{ cartSize !== 0 ? cartSize : 0 }} Selected item(s)</small>
+                <h5>TOTAL : {{ calculateTotal() | currency: "USD" }}</h5>
+            </div>
+
+            <div class="col-auto restaurant">
+              <button
+                class="btn"
+                (click)="purchaseCart()"
+              >
+                Purchase
+              </button>
+            </div>
           </div>
         </div>
       </li>
