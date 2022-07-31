@@ -14,6 +14,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatChipsModule } from '@angular/material/chips'
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -40,6 +41,7 @@ import { CheeseInfoDialogComponent } from './cheese-info-dialog/cheese-info-dial
     MatDialogModule,
     MatChipsModule,
     MatDividerModule,
+    MatTableModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],

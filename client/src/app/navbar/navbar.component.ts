@@ -17,7 +17,17 @@ export class NavbarComponent implements OnInit {
   cartSize: number;
   cartTotal: number;
   _message: string;
+
+  transTotal: number;
+  recentPurchasesColumns: string[] = [
+    'No',
+    'Date',
+    'Total Items',
+    'Total Amount'
+  ];
+
   products: Cheese[];
+  transactions: Transaction[];
 
   store: any = [];
   logo: any;
@@ -40,6 +50,16 @@ export class NavbarComponent implements OnInit {
         0
       );
     });
+
+    this.transService.getTransactions().subscribe((data) => {
+      console.log('transaction data', data);
+      this.transactions = data;
+      this.transTotal = data.length;
+      console.log('transactions', this.transactions);
+    });
+
+    this.transTotal = this.transactions ? this.transactions.length : 0; 
+    console.log('transtotal', this.transTotal);
   }
 
   // Increments the number of items in cart if value is positive,
@@ -104,5 +124,9 @@ export class NavbarComponent implements OnInit {
     console.log('Converted Cart', trans);
     this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete'));
     this.clearCart();
+
+    this.transService.getTransactions().subscribe((data) => {
+      this.transactions = data;
+    });
   }
 }

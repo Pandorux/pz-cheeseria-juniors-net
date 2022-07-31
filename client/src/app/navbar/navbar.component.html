@@ -48,7 +48,7 @@
               align-items-center
               flex-column
             "
-            *ngIf="cartSize === 0"
+            *ngIf="transTotal === 0"
           >
             <span
               ><img
@@ -63,6 +63,45 @@
               >Once you buy some of our delicious cheeses you'll see your purchases here!</span
             >
           </div>
+
+          <div class="recent-purchases" *ngIf="transTotal !== 0">
+            <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+
+              <ng-container matColumnDef="No">
+                <th mat-header-cell *matHeaderCellDef> No </th>
+                <td mat-cell *matCellDef="let element"> {{ element.transactionNo }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{ element.transDateTime | date }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Total Items">
+                <th mat-header-cell *matHeaderCellDef> Total Items </th>
+                <td mat-cell *matCellDef="let element"> {{ element.totalItemQuantity }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Total Amount">
+                <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+                <td mat-cell *matCellDef="let element"> {{ element.totalAmount }} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="recentPurchasesColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: recentPurchasesColumns;"></tr>
+            </table>
+          </div>
+
+          <div class="row cart-summary" *ngIf="transTotal !== 0" style="display: flex; justify-content: center;">
+            <div class="col-auto restaurant">
+              <button
+                class="btn"
+              >
+                View Full History
+              </button>
+            </div>
+          </div>
+          
         </div>
       </li>
       
