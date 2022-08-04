@@ -15,6 +15,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatChipsModule } from '@angular/material/chips'
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -43,6 +45,8 @@ import { PurchaseHistoryDialogComponent } from './purchase-history-dialog/purcha
     MatChipsModule,
     MatDividerModule,
     MatTableModule,
+    MatIconModule,
+    MatButtonModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],

@@ -3,6 +3,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Transaction } from '../_models/transaction';
 import { TransactionsService } from '../_services/transactions.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ProductsService } from '../_services/cheeses.service';
+import { Cheese } from '../_models/cheese';
 
 @Component({
   selector: 'app-purchase-history-dialog',
@@ -21,6 +23,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class PurchaseHistoryDialogComponent implements OnInit {
 
+  cheeses: Cheese[];
+
   expandedTransaction: Transaction | null;
   transactions: Transaction[];
   purchasesColumns: string[] = [
@@ -32,6 +36,7 @@ export class PurchaseHistoryDialogComponent implements OnInit {
   ];
   purchasedItemColumns: string[] = [
     'item-no',
+    'item-name',
     'item-quantity',
     'item-price',
     'item-total'
@@ -40,7 +45,8 @@ export class PurchaseHistoryDialogComponent implements OnInit {
   constructor(
       // TODO: Unsure if I need both the Dialog Ref and Dialog Data
       public dialogRef: MatDialogRef<PurchaseHistoryDialogComponent>,
-      private transService: TransactionsService
+      private transService: TransactionsService,
+      private productService: ProductsService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +56,20 @@ export class PurchaseHistoryDialogComponent implements OnInit {
       console.log('transactions', this.transactions);
     });
 
+    //fetch products
+    this.productService.getCheeses().subscribe((prods) => {
+      this.cheeses = prods;
+    });
+
     console.log('PurchaseHistoryDialogComponent Init');
+  }
+
+  // returns the details for the specified cheese
+  getCheese(id: string): Cheese {
+    const details = this.cheeses.filter(
+      (cheese) => cheese.id === parseInt(id)
+    );
+    return details[0];
   }
 
 }

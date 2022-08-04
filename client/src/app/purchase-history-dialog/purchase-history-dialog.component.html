@@ -1,4 +1,4 @@
-<div class="container-fluid services restaurant dialog">
+<div class="container-fluid purchase-dialog">
   <div class="row">
     <div class="col-sm-12">
       <h1>Purchase History</h1>
@@ -37,7 +37,7 @@
         <ng-container matColumnDef="purchase-total-amount">
           <th mat-header-cell *matHeaderCellDef>Total Amount</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.totalAmount | number: "1.0-2" }}
+            {{ element.totalAmount | currency }}
           </td>
         </ng-container>
 
@@ -52,8 +52,8 @@
                 $event.stopPropagation()
               "
             >
-              <mat-icon *ngIf="expandedTransaction !== element">V</mat-icon>
-              <mat-icon *ngIf="expandedTransaction === element">^</mat-icon>
+              <mat-icon *ngIf="expandedTransaction !== element">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="expandedTransaction === element">keyboard_arrow_up</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -61,43 +61,49 @@
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let trans" [attr.colspan]="6">
-            <div class="example-element-detail" [@detailExpand]="trans == expandedTransaction ? 'expanded' : 'collapsed'">
+            <div class="hide-expanded-detail" [@detailExpand]="trans == expandedTransaction ? 'expanded' : 'collapsed'">
               <table
                 mat-table
                 [dataSource]="trans.items"
                 class="mat-elevation-z8"
-                multiTemplateDataRows
               >
                 <ng-container matColumnDef="item-no">
-                  <th mat-header-cell *matHeaderCellDef>No</th>
+                  <th mat-header-cell *matHeaderCellDef>Item No</th>
                   <td mat-cell *matCellDef="let element">
                     {{ element.itemNo }}
                   </td>
                 </ng-container>
+
+                <ng-container matColumnDef="item-name">
+                  <th mat-header-cell *matHeaderCellDef>Name</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ getCheese(element.cheeseId).title }}
+                  </td>
+                </ng-container>
         
                 <ng-container matColumnDef="item-quantity">
-                  <th mat-header-cell *matHeaderCellDef>Total Items</th>
+                  <th mat-header-cell *matHeaderCellDef>Quantity</th>
                   <td mat-cell *matCellDef="let element">
                     {{ element.quantity | number: "1.0" }}
                   </td>
                 </ng-container>
         
                 <ng-container matColumnDef="item-price">
-                  <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+                  <th mat-header-cell *matHeaderCellDef>Price</th>
                   <td mat-cell *matCellDef="let element">
-                    {{ element.price | number: "1.0-2" }}
+                    {{ element.price | currency }}
                   </td>
                 </ng-container>
 
                 <ng-container matColumnDef="item-total">
-                  <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+                  <th mat-header-cell *matHeaderCellDef>Total</th>
                   <td mat-cell *matCellDef="let element">
-                    {{ element.total | number: "1.0-2" }}
+                    {{ element.total | currency }}
                   </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="purchasedItemColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: purchasedItemColumns" class="example-detail-row"></tr>
+                <tr mat-row *matRowDef="let row; columns: purchasedItemColumns"></tr>
               </table>
             </div>
           </td>
@@ -105,11 +111,9 @@
 
         <tr mat-header-row *matHeaderRowDef="purchasesColumns"></tr>
         <tr mat-row *matRowDef="let element; columns: purchasesColumns;"
-          class="example-element-row"
-          [class.example-expanded-row]="expandedTransaction === element"
           (click)="expandedTransaction = expandedTransaction === element ? null : element">
         </tr>
-        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="expanded-detail-row"></tr>
       </table>
     </div>
   </div>
