@@ -17,6 +17,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -47,6 +49,8 @@ import { PurchaseHistoryDialogComponent } from './purchase-history-dialog/purcha
     MatTableModule,
     MatIconModule,
     MatButtonModule,
+    MatPaginatorModule,
+    MatSortModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../_services/cart.service';
 import { CartModelPublic } from '../_models/cart';
 import { Cheese } from '../_models/cheese';
@@ -8,6 +8,8 @@ import { TransactionsService } from '../_services/transactions.service';
 import { Transtype } from '../_models/trans-type';
 import { PurchaseHistoryDialogComponent } from '../purchase-history-dialog/purchase-history-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +20,11 @@ import { MatDialog } from '@angular/material/dialog';
   ],
 })
 export class NavbarComponent implements OnInit {
+  
+  @ViewChild(MatSort) set matSort(sort: MatSort) {
+    this.transactionDataSource.sort = sort;
+  };
+
   cartData: CartModelPublic;
   cartSize: number;
   cartTotal: number;
@@ -25,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
   transTotal: number;
   recentPurchasesColumns: string[] = [
-    'purchase-no',
+    'transactionNo',
     'purchase-datetime',
     'purchase-total-items',
     'purchase-total-amount'
@@ -33,6 +40,7 @@ export class NavbarComponent implements OnInit {
 
   products: Cheese[];
   transactions: Transaction[];
+  transactionDataSource: MatTableDataSource<Transaction>;
 
   store: any = [];
   logo: any;
@@ -61,6 +69,7 @@ export class NavbarComponent implements OnInit {
       console.log('transaction data', data);
       this.transactions = data;
       this.transTotal = data.length;
+      this.transactionDataSource = new MatTableDataSource<Transaction>(this.transactions);
       console.log('transactions', this.transactions);
     });
 

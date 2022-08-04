@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Transaction } from '../_models/transaction';
 import { TransactionsService } from '../_services/transactions.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ProductsService } from '../_services/cheeses.service';
 import { Cheese } from '../_models/cheese';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-purchase-history-dialog',
   templateUrl: './purchase-history-dialog.component.html',
   styleUrls: [
     './../purchases.css',
-    './purchase-history-dialog.component.css'
+    './purchase-history-dialog.component.css',
+    '../cheeses-tab/cheeses-tab.component.css'
   ],
   animations: [
     trigger('detailExpand', [
@@ -23,12 +27,18 @@ import { Cheese } from '../_models/cheese';
 })
 export class PurchaseHistoryDialogComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) set matSort(sort: MatSort) {
+    this.transactionDataSource.sort = sort;
+  };
+  
   cheeses: Cheese[];
 
   expandedTransaction: Transaction | null;
   transactions: Transaction[];
+  transactionDataSource: MatTableDataSource<Transaction>;
   purchasesColumns: string[] = [
-    'purchase-no',
+    'transactionNo',
     'purchase-datetime',
     'purchase-total-items',
     'purchase-total-amount',
@@ -53,7 +63,13 @@ export class PurchaseHistoryDialogComponent implements OnInit {
     this.transService.getTransactions().subscribe((data) => {
       console.log('transaction data', data);
       this.transactions = data;
+      this.transactionDataSource = new MatTableDataSource(this.transactions);
+
+      // this.transactionDataSource.sort = this.sort;
+      this.transactionDataSource.paginator = this.paginator;
+
       console.log('transactions', this.transactions);
+      console.log('DS', this.transactionDataSource);
     });
 
     //fetch products
@@ -70,6 +86,10 @@ export class PurchaseHistoryDialogComponent implements OnInit {
       (cheese) => cheese.id === parseInt(id)
     );
     return details[0];
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }

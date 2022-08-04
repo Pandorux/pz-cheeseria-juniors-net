@@ -3,7 +3,7 @@
   width: 100%
 }
 
-.mat-column-purchase-no, .mat-column-item-no {
+.mat-column-transactionNo, .mat-column-item-no {
   padding-right: 24px;
   text-align: center
 }
