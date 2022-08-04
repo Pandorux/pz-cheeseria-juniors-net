@@ -6,6 +6,8 @@ import { Transaction } from '../_models/transaction';
 import { TransItem } from '../_models/transitem';
 import { TransactionsService } from '../_services/transactions.service';
 import { Transtype } from '../_models/trans-type';
+import { PurchaseHistoryDialogComponent } from '../purchase-history-dialog/purchase-history-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -34,7 +36,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private transService: TransactionsService
+    private transService: TransactionsService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -128,5 +131,9 @@ export class NavbarComponent implements OnInit {
     this.transService.getTransactions().subscribe((data) => {
       this.transactions = data;
     });
+  }
+
+  openPurchaseHistoryDialog() {
+    let dialogRef = this.dialog.open(PurchaseHistoryDialogComponent);
   }
 }

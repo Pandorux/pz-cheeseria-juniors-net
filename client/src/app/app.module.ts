@@ -22,9 +22,10 @@ import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CheesesTabComponent } from './cheeses-tab/cheeses-tab.component';
 import { CheeseInfoDialogComponent } from './cheese-info-dialog/cheese-info-dialog.component';
+import { PurchaseHistoryDialogComponent } from './purchase-history-dialog/purchase-history-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, CheesesTabComponent, CheeseInfoDialogComponent],
+  declarations: [AppComponent, NavbarComponent, CheesesTabComponent, CheeseInfoDialogComponent, PurchaseHistoryDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
