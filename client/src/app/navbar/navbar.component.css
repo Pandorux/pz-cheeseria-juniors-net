@@ -256,6 +256,19 @@ li .cart-count {
   }
 } */
 
+.mat-column-purchase-no {
+  padding-right: 24px;
+  text-align: center
+}
+
+.mat-column-purchase-total-items {
+  text-align: center
+}
+
+.mat-column-purchase-total-amount {
+  text-align: right;
+}
+
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .navbar {

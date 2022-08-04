@@ -20,10 +20,10 @@ export class NavbarComponent implements OnInit {
 
   transTotal: number;
   recentPurchasesColumns: string[] = [
-    'No',
-    'Date',
-    'Total Items',
-    'Total Amount'
+    'purchase-no',
+    'purchase-datetime',
+    'purchase-total-items',
+    'purchase-total-amount'
   ];
 
   products: Cheese[];
