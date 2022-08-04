@@ -28,9 +28,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class PurchaseHistoryDialogComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    this.transactionDataSource.sort = sort;
-  };
+  @ViewChild(MatSort) sort: MatSort;
   
   cheeses: Cheese[];
 
@@ -65,7 +63,7 @@ export class PurchaseHistoryDialogComponent implements OnInit {
       this.transactions = data;
       this.transactionDataSource = new MatTableDataSource(this.transactions);
 
-      // this.transactionDataSource.sort = this.sort;
+      this.transactionDataSource.sort = this.sort;
       this.transactionDataSource.paginator = this.paginator;
 
       console.log('transactions', this.transactions);
@@ -82,10 +80,11 @@ export class PurchaseHistoryDialogComponent implements OnInit {
 
   // returns the details for the specified cheese
   getCheese(id: string): Cheese {
-    const details = this.cheeses.filter(
+    const details = this.cheeses?.filter(
       (cheese) => cheese.id === parseInt(id)
     );
-    return details[0];
+    
+    return details?.length > 0 ? details[0] : undefined;
   }
 
   closeDialog() {

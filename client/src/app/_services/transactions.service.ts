@@ -24,6 +24,14 @@ import { Transaction } from '../_models/transaction';
       return this.http.get(this.server_url + '/transactions/get');
     }
 
+    getRecentPurchaseHistory(): Observable<any> {
+      return this.http.get(this.server_url + '/transactions/get?limit=5&orderByLatest=true');
+    }
+
+    getTransactionCount(): Observable<any> {
+      return this.http.get(this.server_url + '/transactions/get/count');
+    }
+
     postTransaction(trans: Transaction): Observable<any> {
       return this.http.post<any>(this.server_url + '/transactions/post', trans);
     }

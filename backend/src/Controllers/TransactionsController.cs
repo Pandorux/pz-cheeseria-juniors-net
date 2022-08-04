@@ -2,6 +2,7 @@
 using Pz.Cheeseria.Api.Data;
 using Pz.Cheeseria.Api.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pz.Cheeseria.Api.Controllers
@@ -13,9 +14,14 @@ namespace Pz.Cheeseria.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(Transaction[]), 200)]
         [Route("get")]
-        public IActionResult GetTransactions()
+        public IActionResult GetTransactions(int limit = 100, bool orderByLatest = false)
         {
-            return Ok(TransactionRepository.Transactions);
+            List<Transaction> transactions = TransactionRepository.Transactions;
+
+            if (orderByLatest)
+                transactions.OrderByDescending(t => t.TransDateTime);
+
+            return Ok(transactions.Take(limit));
         }
 
         [HttpGet]
@@ -49,10 +55,17 @@ namespace Pz.Cheeseria.Api.Controllers
 
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(Transaction), 200)]
+        [Route("get/count")]
+        public IActionResult GetTransactionCount()
+        {
+            return Ok(TransactionRepository.Transactions.Count);
+        }
+
         [HttpPost]
         [ProducesResponseType(200)]
         [Route("post")]
-        // TODO: Nested Item Array is not being sent through
         public IActionResult PostTransaction([FromBody] Transaction trans)
         {
             trans.TransactionNo = TransactionRepository.Transactions.Count + 1;

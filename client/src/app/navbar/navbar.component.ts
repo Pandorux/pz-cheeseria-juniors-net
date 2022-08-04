@@ -65,10 +65,13 @@ export class NavbarComponent implements OnInit {
       );
     });
 
-    this.transService.getTransactions().subscribe((data) => {
+    this.transService.getTransactionCount().subscribe((count) => {
+      this.transTotal = count;
+    });
+
+    this.transService.getRecentPurchaseHistory().subscribe((data) => {
       console.log('transaction data', data);
       this.transactions = data;
-      this.transTotal = data.length;
       this.transactionDataSource = new MatTableDataSource<Transaction>(this.transactions);
       console.log('transactions', this.transactions);
     });
