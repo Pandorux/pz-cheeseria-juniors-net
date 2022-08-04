@@ -57,7 +57,25 @@ a
     cursor: pointer;
 }
 
-.restaurant .btn{
+.restaurant-btn .btn {
+    background: #cf0810;
+    color: white;
+    padding: 10px 20px;
+    border: rgb(204, 204, 204) 5px solid;
+    border-radius: 50px;
+}
+
+.restaurant-btn .btn:hover {
+    background: #ac070c;
+    border: rgb(164, 164, 164) 5px solid;
+}
+
+.restaurant-btn .btn:active {
+    background: #80060a;
+    border: rgb(124, 124, 124) 5px solid;
+}
+
+.restaurant .btn {
     background: #cf0810;
     color: white;
     padding: 10px 20px;

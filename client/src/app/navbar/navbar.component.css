@@ -261,12 +261,20 @@ li .cart-count {
   .navbar {
     position: relative;
   }
+
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
-    margin-left: -320px;
     width: 450px;
     margin-top: 16px;
     height: 70vh;
+  }
+
+  .dropdown-menu-right {
+    margin-left: -320px;
+  }
+
+  .dropdown-menu-left {
+    margin-right: -320px;
   }
 
   .navbar-nav > li > a {
@@ -506,7 +514,7 @@ li .cart-count {
 @media (max-width: 768px) {
   .navbar-collapse {
     position: fixed;
-    top: 93px;
+    top: 55px;
     right: 0;
     padding-left: 15px;
     padding-right: 15px;

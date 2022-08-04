@@ -16,10 +16,11 @@ Things to Complete
     - Fix Cart UI for Lower Resolutions <= Do this after recent purchase is complete
 
 3. Recent Purchase History
-    - Create new Component for Purchase History (Probs Drawer for this)
-    - Add Get Endpoint to Transaction History if I haven't already
-    - Routing & Getting Data
-    - HTML Structure & CSS
+    - ~~Create new Component for Purchase History (Probs Drawer for this)~~
+    - ~~Add Get Endpoint to Transaction History if I haven't already~~
+    - ~~Create Full History Dialog~~
+    - ~~Routing & Getting Data~~
+    - ~~HTML Structure & CSS~~
 
 4. Cypress UI Automation
     - Haven't done this before. Learn more about it as I get closer to this step
@@ -28,3 +29,4 @@ Things to Complete
 5. Things for Later if I have time
     - Cheese Tab: Add Hover Text to make it more clear that the image can be clicked on
     - Buttons: Be nice to look into Button Ripple effects as well 
+    - Close Purchase History Dropdown on Full History Button Click

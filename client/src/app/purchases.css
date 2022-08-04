@@ -1,0 +1,32 @@
+
+.mat-table {
+  width: 100%
+}
+
+.mat-column-transactionNo, .mat-column-item-no {
+  padding-right: 24px;
+  text-align: center
+}
+
+.mat-column-purchase-total-items, 
+.mat-column-item-quantity,
+.mat-column-item-price {
+  text-align: center
+}
+
+.mat-column-purchase-total-amount, .mat-column-item-total {
+  text-align: right;
+}
+
+.mat-column-expand {
+  padding-left: 24px;
+}
+
+.hide-expanded-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+tr.expanded-detail-row {
+  height: 0;
+}

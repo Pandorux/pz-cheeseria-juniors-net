@@ -23,31 +23,120 @@
       <li class="nav-item">
         <a
           href="#"
-          class="nav-link"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
+          class="nav-link dropdown-toggle"
+          role="button"
+          id="navbarDropdown"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="true"
+          [attr.data-cy]="'view-transaction-history-btn'"
           >Recent Purchases</a
         >
+
+        <span class="space"></span>
+
+        <div
+          class="dropdown-menu dropdown-menu-left"
+          aria-labelledby="navbarDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <h2 class="ml-5 mt-4">Your Purchase History</h2>
+          <div
+            class="
+              no-item
+              w-100
+              d-flex
+              justify-content-center
+              align-items-center
+              flex-column
+            "
+            *ngIf="transTotal === 0"
+          >
+            <span
+              ><img
+                src="../../assets/img/nothing_to_see.png"
+                alt=""
+                class="nothing-img"
+            /></span>
+            <span class="nothing-top-text mt-2 font-weight-bold"
+              >Nothing to see here!</span
+            >
+            <span class="nothing-small-text"
+              >Once you buy some of our delicious cheeses you'll see your purchases here!</span
+            >
+          </div>
+
+          <div class="recent-purchases" style="margin: 15px;" *ngIf="transTotal !== 0">
+            <table 
+              mat-table 
+              [dataSource]="transactionDataSource" 
+              class="mat-elevation-z8"
+              matSort
+              matSortActive="transactionNo"
+              matSortDirection="desc"
+            >
+
+              <ng-container matColumnDef="transactionNo">
+                <th mat-header-cell *matHeaderCellDef> No </th>
+                <td mat-cell *matCellDef="let element"> {{ element.transactionNo }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="purchase-datetime">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{ element.transDateTime | date : 'medium' }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="purchase-total-items">
+                <th mat-header-cell *matHeaderCellDef> Total Items </th>
+                <td mat-cell *matCellDef="let element"> {{ element.totalItemQuantity | number: '1.0' }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="purchase-total-amount">
+                <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+                <td mat-cell *matCellDef="let element"> {{ element.totalAmount | currency }} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="recentPurchasesColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: recentPurchasesColumns;"></tr>
+            </table>
+
+            <div *ngIf="transTotal >= 6" style="text-align: center;">
+              <br>
+
+              <span class="nothing-top-text mt-2 font-weight-bold">
+                You have purchased from us {{ transTotal }} times!
+              </span>
+  
+              <br>
+
+              <span class="nothing-small-text">
+                To see all your orders in detail click on <br><b>View Full History</b>.
+              </span>
+              
+            </div>
+          </div>
+
+          <div class="row cart-summary" *ngIf="transTotal !== 0" style="display: flex; justify-content: center;">
+            <div class="col-auto restaurant">
+              <button
+                class="btn"
+                (click)="openPurchaseHistoryDialog()"
+              >
+                View Full History
+              </button>
+            </div>
+          </div>
+          
+        </div>
       </li>
-
+      
       <div class="dropdown-divider d-block d-lg-none"></div>
-
-      <div class="d-block">
-        <button class="btn btn-dark d-lg-none w-50 rounded-0">
-          <i
-            class="fa fa-shopping-cart"
-            routerLink="/cart"
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-          ></i
-          >View Cart
-        </button>
-      </div>
     </ul>
+
     <ul class="navbar-nav ml-auto icons">
       <li class="space"></li>
 
-      <li class="dropdown d-none d-lg-block">
+      <li class="nav-item">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -58,7 +147,7 @@
           aria-expanded="true"
           [attr.data-cy]="'view-cart-btn'"
         >
-          <i class="fa fa-shopping-cart" aria-hidden="true">
+          <i class="fa fa-shopping-cart" style="text-align: center;" aria-hidden="true">
             {{ cartSize }}
             <br />
             <span>View Cart</span>
@@ -66,7 +155,7 @@
         </a>
 
         <div
-          class="dropdown-menu"
+          class="dropdown-menu dropdown-menu-right"
           aria-labelledby="navbarDropdown"
           (click)="$event.stopPropagation()"
         >
@@ -180,6 +269,7 @@
         </div>
       </li>
     </ul>
+
   </div>
 </nav>
 <!--End homepage-->
