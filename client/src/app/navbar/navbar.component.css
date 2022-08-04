@@ -514,7 +514,7 @@ li .cart-count {
 @media (max-width: 768px) {
   .navbar-collapse {
     position: fixed;
-    top: 93px;
+    top: 55px;
     right: 0;
     padding-left: 15px;
     padding-right: 15px;
