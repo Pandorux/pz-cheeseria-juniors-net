@@ -1,1 +1,40 @@
-<p>purchase-history-dialog works!</p>
+
+<div class="container-fluid services  restaurant dialog">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>
+                Purchase History
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table mat-table [dataSource]="transactions" style="width: 100%" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="purchase-no">
+                  <th mat-header-cell *matHeaderCellDef> No </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.transactionNo }} </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="purchase-datetime">
+                  <th mat-header-cell *matHeaderCellDef> Date </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.transDateTime | date : 'medium' }} </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="purchase-total-items">
+                  <th mat-header-cell *matHeaderCellDef> Total Items </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.totalItemQuantity | number: '1.0' }} </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="purchase-total-amount">
+                  <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.totalAmount | number: '1.0-2' }} </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="purchasesColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: purchasesColumns;"></tr>
+              </table>
+        </div>
+    </div>
+</div>

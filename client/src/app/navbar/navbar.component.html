@@ -65,7 +65,7 @@
           </div>
 
           <div class="recent-purchases" style="margin: 15px;" *ngIf="transTotal !== 0">
-            <table mat-table [dataSource]="transactions | slice : 0 : 5" style="width: 100%" class="mat-elevation-z8">
+            <table mat-table [dataSource]="transactions | slice : 0 : 5" class="mat-elevation-z8">
 
               <ng-container matColumnDef="purchase-no">
                 <th mat-header-cell *matHeaderCellDef> No </th>

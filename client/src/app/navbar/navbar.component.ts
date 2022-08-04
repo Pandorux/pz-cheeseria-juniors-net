@@ -12,7 +12,10 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  styleUrls: [
+    './../purchases.css',
+    './navbar.component.css'
+  ],
 })
 export class NavbarComponent implements OnInit {
   cartData: CartModelPublic;
