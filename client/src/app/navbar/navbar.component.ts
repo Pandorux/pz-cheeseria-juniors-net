@@ -21,9 +21,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class NavbarComponent implements OnInit {
   
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    this.transactionDataSource.sort = sort;
-  };
+  @ViewChild(MatSort) sort: MatSort;
 
   cartData: CartModelPublic;
   cartSize: number;
@@ -73,6 +71,7 @@ export class NavbarComponent implements OnInit {
       console.log('transaction data', data);
       this.transactions = data;
       this.transactionDataSource = new MatTableDataSource<Transaction>(this.transactions);
+      this.transactionDataSource.sort = this.sort;
       console.log('transactions', this.transactions);
     });
 
