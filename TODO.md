@@ -23,10 +23,13 @@ Things to Complete
     - ~~HTML Structure & CSS~~
 
 4. Cypress UI Automation
-    - Haven't done this before. Learn more about it as I get closer to this step
+    - ~~Haven't done this before. Learn more about it as I get closer to this step~~
 
 
 5. Things for Later if I have time
     - Cheese Tab: Add Hover Text to make it more clear that the image can be clicked on
     - Buttons: Be nice to look into Button Ripple effects as well 
     - Close Purchase History Dropdown on Full History Button Click
+    - Add Tests for Purchase Dialog
+    - Make Website more Responsive - I.e. Cypress View of the Website has some issues
+    - More Error Handling and State Loading
