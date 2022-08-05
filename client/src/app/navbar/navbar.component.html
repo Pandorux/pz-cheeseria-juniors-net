@@ -78,7 +78,7 @@
 
               <ng-container matColumnDef="transactionNo">
                 <th mat-header-cell *matHeaderCellDef> No </th>
-                <td mat-cell *matCellDef="let element"> {{ element.transactionNo }} </td>
+                <td mat-cell *matCellDef="let element" [attr.data-cy]="'recent-purchase-no-' + element?.transactionNo"> {{ element.transactionNo }} </td>
               </ng-container>
 
               <ng-container matColumnDef="purchase-datetime">
@@ -88,7 +88,7 @@
 
               <ng-container matColumnDef="purchase-total-items">
                 <th mat-header-cell *matHeaderCellDef> Total Items </th>
-                <td mat-cell *matCellDef="let element"> {{ element.totalItemQuantity | number: '1.0' }} </td>
+                <td mat-cell *matCellDef="let element" [attr.data-cy]="'recent-purchase-total-items-' + element?.transactionNo"> {{ element.totalItemQuantity | number: '1.0' }} </td>
               </ng-container>
 
               <ng-container matColumnDef="purchase-total-amount">
@@ -261,6 +261,7 @@
               <button
                 class="btn"
                 (click)="purchaseCart()"
+                [attr.data-cy]="'purchase-items-btn'"
               >
                 Purchase
               </button>

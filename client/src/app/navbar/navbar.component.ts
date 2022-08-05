@@ -63,20 +63,7 @@ export class NavbarComponent implements OnInit {
       );
     });
 
-    this.transService.getTransactionCount().subscribe((count) => {
-      this.transTotal = count;
-    });
-
-    this.transService.getRecentPurchaseHistory().subscribe((data) => {
-      console.log('transaction data', data);
-      this.transactions = data;
-      this.transactionDataSource = new MatTableDataSource<Transaction>(this.transactions);
-      this.transactionDataSource.sort = this.sort;
-      console.log('transactions', this.transactions);
-    });
-
-    this.transTotal = this.transactions ? this.transactions.length : 0; 
-    console.log('transtotal', this.transTotal);
+    this.loadPurchaseHistory();
   }
 
   // Increments the number of items in cart if value is positive,
@@ -142,12 +129,27 @@ export class NavbarComponent implements OnInit {
     this.transService.postTransaction(trans).subscribe((r) => console.log('Post Transaction Complete'));
     this.clearCart();
 
-    this.transService.getTransactions().subscribe((data) => {
-      this.transactions = data;
-    });
+    this.loadPurchaseHistory();
   }
 
   openPurchaseHistoryDialog() {
     let dialogRef = this.dialog.open(PurchaseHistoryDialogComponent);
+  }
+
+  loadPurchaseHistory() {
+    this.transService.getTransactionCount().subscribe((count) => {
+      this.transTotal = count;
+    });
+
+    this.transService.getRecentPurchaseHistory().subscribe((data) => {
+      console.log('transaction data', data);
+      this.transactions = data;
+      this.transactionDataSource = new MatTableDataSource<Transaction>(this.transactions);
+      this.transactionDataSource.sort = this.sort;
+      console.log('transactions', this.transactions);
+    });
+
+    this.transTotal = this.transactions ? this.transactions.length : 0; 
+    console.log('transtotal', this.transTotal);
   }
 }
