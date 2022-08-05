@@ -13,7 +13,7 @@ Things to Complete
     - ~~Create Model for Transactions~~
     - ~~Probs add API Service for Transactions in Frontend~~
     - ~~Verify if everything is working w/ Postman~~ <= ~~Just need to figure out why items aren't being sent~~
-    - Fix Cart UI for Lower Resolutions <= Do this after recent purchase is complete
+    - ~~Fix Cart UI for Lower Resolutions <= Do this after recent purchase is complete~~
 
 3. Recent Purchase History
     - ~~Create new Component for Purchase History (Probs Drawer for this)~~

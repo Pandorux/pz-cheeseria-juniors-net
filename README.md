@@ -1,3 +1,44 @@
+# Notes on Completed Technical Assessment
+
+- Technologies Used for the First Time
+    - Cypress
+    - Angular Material UI
+
+- Implemented
+    - Transaction Endpoints and Injectable Service
+    - Cart Dropdown Purchase Button
+    - Cheese Info Dialog (Click on Cheese Image)
+    - Recent Purchases Dropdown
+    - Full Purchase History Dialog w/ Expandable Grid
+    - Recent Purchases Cypress Tests
+
+- Improvements
+    - UX Improvements
+        - Restaurant Button now has Hover and Active States
+        - Improved Hover State of Cheese Cards
+        - More Clear that the Cheese Card can open a dialog (Could probs be improved more)
+    - Responsiveness
+        - Cart Dropdown now works on lower resolutions
+
+- What I would do if I had more time
+    - Recent Purchases Dropdown: Have the dropdown closed when 'View Purchase History' Button is clicked
+    - Purchase Dialog:
+        - Make it more Mobile Friendly
+        - Make Dialog have a fixed size so its not jankily resizing when a row is expanded
+        - Make the Purchase Grid itself its own Component to reduce Code Duplication
+    - Make CSS Styles more Modular and Globalized: 
+        - I.e. Make a Dedicated CSS File for the Restaurant Styles
+        - Also, make it easier to directly applied styling to make it easier to mix and match styles as needed
+    - More Error Handling and State Loading
+
+- Duration 
+    - About 15 Hours
+    - Time spent more focused on leisurely learning than getting the Assessment done as quickly as possible
+    - Frontend became a timesink at times due to being new to Angular Material UI and being less experience w/ Frontend Work. Namely,
+        - Took me a bit to figure out the Expandable Purchase Grid, Pagination and Sorting Situation
+        - Fixing weird UI Issues like the Cart Menu disappearing completely at lower Screen Widths
+
+
 # Welcome to Patient Zero's Cheeseria Coding Challenge (For Juniors)
 
 ## Overview
