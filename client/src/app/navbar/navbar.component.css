@@ -202,6 +202,27 @@ li .cart-count {
   padding: 10px;
 }
 
+/*
+  // TODO: Make this code more global and easier to reuse
+*/
+.restaurant .btn{
+  background: #cf0810;
+  color: white;
+  padding: 10px 20px;
+  border: rgb(204, 204, 204) 5px solid;
+  border-radius: 50px;
+}
+
+.restaurant .btn:hover{
+  background: #ac070c;
+  border: rgb(164, 164, 164) 5px solid;
+}
+
+.restaurant .btn:active{
+  background: #80060a;
+  border: rgb(124, 124, 124) 5px solid;
+}
+
 /* @media (min-width: 320px) {
   .navbar {
     position: relative;
@@ -240,12 +261,20 @@ li .cart-count {
   .navbar {
     position: relative;
   }
+
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
-    margin-left: -320px;
     width: 450px;
     margin-top: 16px;
     height: 70vh;
+  }
+
+  .dropdown-menu-right {
+    margin-left: -320px;
+  }
+
+  .dropdown-menu-left {
+    margin-right: -320px;
   }
 
   .navbar-nav > li > a {
@@ -485,7 +514,7 @@ li .cart-count {
 @media (max-width: 768px) {
   .navbar-collapse {
     position: fixed;
-    top: 93px;
+    top: 55px;
     right: 0;
     padding-left: 15px;
     padding-right: 15px;

@@ -12,15 +12,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatChipsModule } from '@angular/material/chips'
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CheesesTabComponent } from './cheeses-tab/cheeses-tab.component';
+import { CheeseInfoDialogComponent } from './cheese-info-dialog/cheese-info-dialog.component';
+import { PurchaseHistoryDialogComponent } from './purchase-history-dialog/purchase-history-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, CheesesTabComponent],
+  declarations: [AppComponent, NavbarComponent, CheesesTabComponent, CheeseInfoDialogComponent, PurchaseHistoryDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -35,6 +44,13 @@ import { CheesesTabComponent } from './cheeses-tab/cheeses-tab.component';
     NgxSpinnerModule,
     NoopAnimationsModule,
     MatDialogModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatSortModule,
     NgxSkeletonLoaderModule.forRoot(),
     NgxPaginationModule,
   ],

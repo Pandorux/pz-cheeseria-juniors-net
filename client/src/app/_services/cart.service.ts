@@ -55,4 +55,14 @@ export class CartService {
     delete this.cartDataClient[id];
     this.cartDataObs$.next(this.cartDataClient);
   }
+
+  ClearCart() {
+
+    // TODO: Not sure how safe it is to do this
+    Object.entries(this.cartDataClient).forEach (
+      ([key, value]) => { delete this.cartDataClient[key]; }
+    );
+
+  }
+
 }
